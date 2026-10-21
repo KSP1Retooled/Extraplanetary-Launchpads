@@ -156,16 +156,19 @@ info:
 	@echo "    zip:        ${ZIP}"
 	@echo "    KSP Data:   ${KSPDIR}"
 
+# Unity 6 (KSP Retooled) engine assemblies are built against netstandard 2.1.
 SYSTEM := \
 	-lib:${MANAGED} \
 	-r:${MANAGED}/mscorlib.dll \
 	-r:${MANAGED}/System.dll \
-	-r:${MANAGED}/System.Core.dll
+	-r:${MANAGED}/System.Core.dll \
+	-r:${MANAGED}/netstandard.dll
 
 KSP := \
 	-r:Assembly-CSharp.dll \
 	-r:Assembly-CSharp-firstpass.dll
 
+# Unity 6 moved SerializeField and friends into UnityEngine.ScriptingModule.
 UNITY := \
 	-r:UnityEngine.dll \
 	-r:UnityEngine.UI.dll \
@@ -179,6 +182,7 @@ UNITY := \
 	-r:UnityEngine.ImageConversionModule.dll \
 	-r:UnityEngine.ParticleSystemModule.dll \
 	-r:UnityEngine.AudioModule.dll \
+	-r:UnityEngine.ScriptingModule.dll \
 	$e
 
 bin/Launchpad.dll: ${EL_FILES} ${KodeUI}

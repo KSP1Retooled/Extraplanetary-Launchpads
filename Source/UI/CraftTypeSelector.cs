@@ -190,6 +190,9 @@ namespace ExtraplanetaryLaunchpads {
 		public float minHeight { get { return minSize.y; } }
 		public float preferredHeight { get { return preferredSize.y; } }
 		public float flexibleHeight  { get { return -1; } }
+		// Unity 6's ILayoutElement adds max sizes; -1 means no maximum.
+		public float maxWidth { get { return -1; } }
+		public float maxHeight { get { return -1; } }
 #endregion
 	}
 }
